@@ -93,7 +93,7 @@ class Sequence:
             walk = self._trailer._prev
             for _ in range(self._size - 1 - r):
                 walk = walk._prev
-        return walk._element
+        return walk
 
     def rankOf(self, p):
         """Return the rank of the element at Position p."""
