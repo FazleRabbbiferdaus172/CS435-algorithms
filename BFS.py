@@ -114,6 +114,9 @@ class BFSTemplate:
     def cross_edge_visit(self, v, w, e): pass
     def post_init_vertex(self, v): pass
     def post_init_edge(self, e): pass
+    def is_next_componenet(self, v):
+        if self.vertex_labels[v] == UNEXPLORED:
+            return True
 
     def result(self):
         """Hook to return the final result of the BFS traversal."""
@@ -132,7 +135,7 @@ class BFSTemplate:
         for e in self.graph.edges():
             self.edge_labels[e] = UNEXPLORED
         for v in self.graph.vertices():
-            if self.vertex_labels[v] == UNEXPLORED:
+            if self.is_next_componenet(v):
                 self.pre_component_visit(v)
                 self._bfs_component(v)
                 self.post_component_visit(v)
